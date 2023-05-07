@@ -1,0 +1,25 @@
+version: '3.7'
+
+services:
+  anonymousoverflow:
+    container_name: 'anonymousoverflow'
+    hostname: 'anonymousoverflow'
+    user: 65534:65534
+    read_only: true
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - APP_URL=https://to-your-domain
+      - JWT_SIGNING_SECRET=changethis
+    ports:
+      - '127.0.0.1:8088:8080'
+    restart: 'always'
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    networks:
+     - anonymousoverflow
+networks:
+  anonymousoverflow:
