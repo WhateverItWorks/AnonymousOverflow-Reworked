@@ -6,6 +6,7 @@ services:
     hostname: 'anonymousoverflow'
     user: 65534:65534
     read_only: true
+    #image: codeberg.org/aryak/anonymousoverflow-docker-builds:latest
     build:
       context: .
       dockerfile: Dockerfile
